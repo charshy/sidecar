@@ -1,4 +1,4 @@
-# sidecar
+# Sidecar
 
 [![GoReportCard Widget]][GoReportCard] [![Travis Widget]][Travis]
 
@@ -7,21 +7,41 @@
 [Travis]: https://travis-ci.org/amalgam8/sidecar
 [Travis Widget]: https://travis-ci.org/amalgam8/sidecar.svg?branch=master
 
-A language agnostic sidecar for building microservice applications with
-automatic service registration, and load-balancing.
+## Overview
 
-An overview of the Amalgam8 project is available here: http://amalgam8.io/
+A sidecar for building microservice applications with
+automatic service registration, and load-balancing. The sidecar does not depend on any specific language.
 
-### Architecture
+Learn more about the Amalgam8 project here: [http://amalgam8.io/](http://amalgam8.io/)
+
+## Architecture
 
 ![Sidecar architecture](https://github.com/amalgam8/sidecar/blob/master/sidecar.jpg)
 
-## Usage
-A prebuild Docker iamge is available. Install Docker 1.8 or 1.9 and run the following:
+## Running the sidecar from a Docker image
 
-```docker pull amalgam8/a8-controller```
+1. [Download](www.docker.com) and install Docker 1.8 or 1.9.
+3. In Docker, pull the prebuilt Amalgam8 Docker image by running the following command:
 
-### Configuration options
+  ```docker pull amalgam8/a8-controller```
+  
+## Cloning the sidecar
+
+  1. [Download](www.golang.com) and install Go.
+  2. Clone the repository with the following command:
+  
+  ```go get github.com/amalgam8/sidecar```
+  
+## Make targets
+The following targets are available. Each may be run with `make <target>`.
+
+| Make Target      | Description |
+|:-----------------|:------------|
+| `release`        | *(Default)* `release` builds the sidecar within a docker container and packages it into a image |
+| `test`           | `test` runs all tests using `go test` |
+| `clean`          | `clean` removes build artifacts. *Note: this does not remove docker images* |
+
+## Configuration options
 Configuration options can be set through environment variables or command line flags. 
 
 | Environment Key | Flag Name                   | Description | Default Value |
@@ -54,28 +74,6 @@ Configuration options can be set through environment variables or command line f
 | KAFKA_BROKER | --kafka_broker [--kafka_broker option --kafka_broker option] | kafka brokers |  |
 |  | --help, -h | show help | |
 |  | --version, -v | print the version | |
-
-## Build from source
-The follow section describes options for building the sidecar from source. Instructions on using a prebuilt Docker image are available [here](https://github.com/amalgam8/sidecar#usage).
-
-### Preprequisites
-* Docker 1.8 or 1.9
-* Go 1.6
-
-### Clone
-
-Clone the repository manually, or use `go get`:
-
-```go get github.com/amalgam8/sidecar```
-
-### Make targets
-The following targets are available. Each may be run with `make <target>`.
-
-| Make Target      | Description |
-|:-----------------|:------------|
-| `release`        | *(Default)* `release` builds the sidecar within a docker container and packages it into a image |
-| `test`           | `test` runs all tests using `go test` |
-| `clean`          | `clean` removes build artifacts. *Note: this does not remove docker images* |
 
 ## License
 Copyright 2016 IBM Corporation
